@@ -6,12 +6,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.SubMenu;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     final int MENU_INFO = 1, MENU_HELP = 2, MENU_SETTINGS = 3;
+    final int MENU_PHONE_SETTINGS = 10, MENU_SYSTEM_SETTINGS = 11;
     private CheckBox chkSettings;
 
     @Override
@@ -38,7 +40,9 @@ public class MainActivity extends AppCompatActivity {
         menuItem = menu.add(1, MENU_HELP, 0, "Help");
         menuItem.setCheckable(true);
 
-        menuItem = menu.add(1, MENU_SETTINGS, 0, "Settings");
+        SubMenu subMenu  = menu.addSubMenu(1, MENU_SETTINGS, 0, "Settings");
+        subMenu.add(2, MENU_PHONE_SETTINGS, 0, "Phone Settings");
+        subMenu.add(2, MENU_SYSTEM_SETTINGS, 0, "System Settings");
         /*if(chkSettings.isChecked()) {
             menuItem.setEnabled(true);
         }
@@ -69,6 +73,12 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case MENU_SETTINGS:
                 mt("Settings");
+                break;
+            case MENU_PHONE_SETTINGS:
+                mt("Phone Settings");
+                break;
+            case MENU_SYSTEM_SETTINGS:
+                mt("System Settings");
                 break;
         }
         return super.onOptionsItemSelected(item);
